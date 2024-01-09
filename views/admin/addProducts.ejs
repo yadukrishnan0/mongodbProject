@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+   
+    <link rel="stylesheet" href="/admincss/addproduct.css">
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+          <div class="card_title">
+            <h1>Add product</h1>
+            <div class="pic"></div>
+          </div>
+          <div class="form">
+          <form action="/admin/addproducts" method="post" enctype="multipart/form-data">
+     
+            <label for="" >photo:</label>
+            <input type="file" name="imgpath"  placeholder="Enter your name" />
+
+
+            <label for="" class="labemail">name:</label>
+            <input type="text" name="name" id="name"  />
+
+            <label for="" class="labpassword">price:</label>
+            <input type="number" name="price"  id="price" />
+
+            <label for="" class="labcon">size:</label>
+            <input type="text" name="size"  id="confirmpassword" />
+
+            <label for="" class="labcon">discription:</label>
+            <input type="text" name="discription"  id="confirmpassword" />
+
+            <button type="submit addbtn">Add</button>
+
+            
+            </form>
+            
+          </div>
+          
+          
+        </div>
+        <a href="/admin/home"><button class="Backbtn">Back</button></a>
+      </div>
+</div>
+</body>
+
+</html>
+

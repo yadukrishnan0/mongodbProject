@@ -1,7 +1,10 @@
 const mongoose =require('mongoose')
 
 const signupSchema = mongoose.Schema({
-   
+   name:{
+     type:String,
+     required:true
+   },
     email:{
         type:String,
         required:true
@@ -9,6 +12,11 @@ const signupSchema = mongoose.Schema({
     password:{
         type:String,
         required:true
+    },
+    admin:{
+       type:Boolean,
+       required:true,
+       default:false
     }
 })
 

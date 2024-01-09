@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/d4181b2b31.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/admincss/adminHome.css">
+   
+    
+</head>
+<body>
+    <div class="nav-bar">
+        <div class="menu">
+         <h3 class="top-row">products</h3>
+         <a href="/admin/addproducts"><h3 class="top-row" id="addproducts">Add product</h3></a>
+      </div>
+      <div class="icon">
+        <a href="/login"><p>Logout<i class="fa-solid fa-right-from-bracket"></i></p></a>
+      </div>
+</div>
+
+<div class="container">
+    <% productDetails.forEach(data=>{%>
+      <div class="card">
+        <div class="top"><img src="/images/<%=data.imgpath%>" class="img"></div>
+        <div class="bottom">
+         <h3><%=data.name%></h3>
+         <p>size:&nbsp <b><%=data.size%></b></p>
+         <p>price:&nbsp <b>$<%=data.price%></b></p>
+         <div class="edit">
+          <a href="/admin/<%= data._id %>"><button class="btn1"> <i class="fa-solid fa-pen"></i></button></a>
+          <a href="/admin/delete/<%= data._id %>"><button class="btn2"><i class="fa-solid fa-trash"></i></button></a> 
+         </div>
+        </div>
+ 
+     </div>
+
+   <% })%>
+</div>
+
+</body>
+</html>

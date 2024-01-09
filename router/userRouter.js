@@ -1,13 +1,19 @@
 const express=require("express");
-const router=express.Router()
-const{
-    signupGet,
-    SignupPost,
-    loginGet,
-    
-}=require("../controllers/userController")
+const router=express.Router();
 
-router.get("/login",loginGet)
-router.get("/signup",signupGet)
-router.post("/",SignupPost)
-module.exports=router
+
+
+const{
+    userHomeGet,
+    profileGet
+}=require("../controllers/userController");
+
+   router.get('/home',userHomeGet)
+   router.get('/profile',profileGet)
+
+
+
+
+
+
+module.exports=router;

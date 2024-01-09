@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/d4181b2b31.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/userCss/userHome.css">
+   
+    
+</head>
+<body>
+    <div class="nav-bar">
+        <div class="menu">
+         <h3 class="top-row">Home</h3>
+         <h3 class="top-row  " >products</h3>
+         <h3>jersey</h3>
+         <h3>Boots</h3>
+         <h3>Details</h3>
+         <h3>contact us</h3>
+
+      </div>
+      <div class="icon">
+        <a href="/login"><p>Logout<i class="fa-solid fa-right-from-bracket"></i></p></a>
+         <a href="/user/profile"><p><i class="fa-solid fa-user"></i></p></a> 
+      </div>
+</div>
+
+<div class="container">
+    <% productDetails.forEach(data=>{%>
+      <div class="card">
+        <div class="top"><img src="/images/<%=data.imgpath%>" class="img"></div>
+        <div class="bottom">
+         <h3><%=data.name%></h3> 
+         <p>size:&nbsp <b><%=data.size%></b></p>
+          <p>price:&nbsp <b>$<%=data.price%></b></p> 
+          
+            <div class="rating" id="rating">
+           <!-- <span> <p>rating:</p></span> -->
+              <span class="star" data-rating="1">&#9733;</span>
+              <span class="star" data-rating="2">&#9733;</span>
+              <span class="star" data-rating="3">&#9733;</span>
+              <span class="star4" data-rating="4">&#9733;</span>
+              <span class="star4" data-rating="5">&#9733;</span>
+            </div>
+            
+        
+          <div class="edit">
+          <button class="btn">Add to cart</button>  
+           <button class="btn">Buy now</button>
+         </div>
+        </div>
+ 
+     </div>
+
+   <% })%>
+</div>
+
+</body>
+</html>

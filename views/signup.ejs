@@ -16,23 +16,34 @@
           </div>
           <div class="form">
           <form action="/" method="post">
+     
+            <label for="" >Name:</label>
+            <input type="text" name="name"  placeholder="Enter your name" />
+
+
             <label for="" class="labemail">Email:</label>
             <input type="text" name="email" id="email" placeholder="email" />
 
             <label for="" class="labpassword">password:</label>
             <input type="password" name="password" placeholder="password" id="password" />
 
-            <label for="" class="confirmpassword">confirmpassword:</label>
+            <label for="" class="labcon">confirmpassword:</label>
             <input type="password" name="confirmpassword" placeholder="confirmpassword" id="confirmpassword" />
 
             <button>Sign Up</button>
             </form>
           </div>
-          <span style="margin-top: 80px;">Already have an account? <a href="/login">Sign In</a></span>
+          <%if(error){ %>
+            <p class="error"><%=error%></>
+
+            <% } %>
+          <p style="color: black;">Already have an account?</p><a href="/login">Sign In</a>
           
         </div>
+
       </div>
 </div>
 </body>
 <script src="validationjs/signupValidation.js"></script>
 </html>
+

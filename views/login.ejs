@@ -15,14 +15,18 @@
             
           </div>
           <div class="form">
-          <form action="/" method="post">
+          <form action="/loginpost" method="post">
             <input type="text" name="email" id="username" placeholder="email" />
             <input type="password" name="password" placeholder="Email" id="email" />
             <!-- <input type="password" name="confirmpassword" placeholder="confirmpassword" id="password" /> -->
             <button>Login</button>
             </form>
           </div>
-          <span style="margin-top: 80px;">create account? <a href="/signup">Signup</a></span>
+          <%if(error){ %>
+            <p class="error"><%=error%></>
+
+            <% } %>
+          <span style="margin-top: 80px;"><a href="/signup">Signup</a></span>
           
         </div>
       </div>

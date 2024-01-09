@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+   
+    <link rel="stylesheet" href="/admincss/addproduct.css">
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+          <div class="card_title">
+            <h1>Edit Product</h1>
+            <div class="pic"><img src="/images/<%=data.imgpath%>" class="img"></div>
+          </div>
+          <div class="form">
+
+          <form action="/admin/<%= data._id %>" method="post" enctype="multipart/form-data">
+     
+            <label for="" >photo:</label>
+            <input type="file" name="imgpath"  placeholder="Enter your name" value="<%=data.imgpath%>" />
+
+
+            <label for="" class="labemail">name:</label>
+            <input type="text" name="name" id="name"  value="<%=data.name%>"/>
+
+            <label for="" class="labpassword">price:</label>
+            <input type="number" name="price"  id="price" value="<%=data.price%>" />
+
+            <label for="" class="labcon">size:</label>
+            <input type="text" name="size"  id="confirmpassword" value="<%=data.size%>" />
+
+            <label for="" class="labcon">discription:</label>
+            <input type="text" name="discription"  value="<%=data.discription%>" />
+
+            <button type="submit addbtn">Update</button>
+
+            
+            </form>
+            
+          </div>
+          
+          
+        </div>
+        <a href="/admin/home"><button class="Backbtn">Back</button></a>
+      </div>
+</div>
+</body>
+
+</html>
+

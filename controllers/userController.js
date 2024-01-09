@@ -1,19 +1,11 @@
-const signupModel=require("../models/signupdatas.js")
-const checkPass = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()]).{8,}$/;
-
+const productModel = require('../models/product.js')
 module.exports={
-    loginGet:(req,res)=>{
-        res.render("login")
+    userHomeGet: async(req,res)=>{
+        const productDetails =await productModel.find({})
+         res.render("user/userHome",{productDetails})
     },
-    signupGet:(req,res)=>{
-        res.render("signup")
+    profileGet:(req,res)=>{
+      res.render("user/profile")
     },
-    SignupPost:(req,res)=>{
-        const{email,password,confirmpassword}=req.body
-    //    if()
-        signupModel.create({email,password})
-        
-        
-    }
-
+    
 }
