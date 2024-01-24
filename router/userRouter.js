@@ -5,11 +5,13 @@ const router=express.Router();
 
 const{
     userHomeGet,
-    profileGet
+    profileGet,
+    profilePost
 }=require("../controllers/userController");
 
    router.get('/home',userHomeGet)
    router.get('/profile',profileGet)
+   router.post("/profilepost",profilePost)
 
 
 

@@ -7,7 +7,6 @@ module.exports = {
     res.status(404).render("login", { error: "" });
   },
   loginPost: async (req, res) => {
- 
     const { email, password } = req.body;
     const accExist = await signupModel.findOne({ email });
 
@@ -16,6 +15,7 @@ module.exports = {
     } else {
       const passmatch = await bcrypt.compare(password, accExist.password);
       if (passmatch) {
+        req.session.email = accExist.email;
         if (accExist.admin) {
           res.redirect("/admin/home");
         } else {
@@ -64,7 +64,16 @@ module.exports = {
 
       res.redirect("/login");
     } catch (err) {
-      console.error(err,"signup post error");
+      console.error(err, "signup post error");
+      res.status(500).send("Internal Server Error");
+    }
+  },
+  logoutGet: (req, res) => {
+    try {
+      req.session.destroy();
+      res.redirect("/login");
+    } catch (error) {
+      console.error(error);
       res.status(500).send("Internal Server Error");
     }
   },

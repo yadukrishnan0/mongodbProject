@@ -4,10 +4,18 @@ const mongoose = require("mongoose");
 module.exports = {
   adminHomeGEt: async (req, res) => {
     const productDetails = await productModel.find({});
-    res.render("admin/adminHome", { productDetails });
+    if (!req.session.email) {
+      res.redirect("/login");
+    } else {
+      res.render("admin/adminHome", { productDetails });
+    }
   },
   AddProductGet: (req, res) => {
-    res.render("admin/addproducts", { data: {} });
+    if (!req.session.email) {
+      res.redirect("/login");
+    } else {
+      res.render("admin/addproducts", { data: {} });
+    }
   },
   AddProductPost: async (req, res) => {
     // console.log('Reached');
@@ -29,27 +37,40 @@ module.exports = {
   },
   editGet: async (req, res, next) => {
     // console.log(req.params.id);
+    if (!req.session.email) {
+      res.redirect("/login");
+    } else {
+      try {
+        const docs = await productModel.findOne({ _id: req.params.id });
 
-    try {
-      const docs = await productModel.findOne({ _id: req.params.id });
-
-      res.render("admin/edit", { data: docs });
-    } catch (err) {
-      console.log("Error: Unable to retrieve and edit");
-      next(err);
+        res.render("admin/edit", { data: docs });
+      } catch (err) {
+        console.log("Error: Unable to retrieve and edit");
+        next(err);
+      }
     }
   },
-  editPost:async (req,res)=>{
-
-    console.log(req.params);
-    const {name} = req.body
-    console.log(name);
-    console.log(req.body);
-    // const docs = await productModel.updateOne({ _id: req.params.id },{$set:{}});
+  editPost: async (req, res) => {
+    const { name, price, size, discription } = req.body;
+    const image = req.file.filename;
+    const producid = req.params.id;
+    await productModel.updateOne(
+      { _id: producid },
+      {
+        $set: {
+          imgpath: image,
+          name: name,
+          price: price,
+          size: size,
+          discription: discription,
+        },
+      }
+    );
+    res.redirect("/admin/home");
   },
-  deleteDoc: async(req,res)=>{
-   const  productid =req.params.id
-   await productModel.deleteOne({_id:productid})
-   res.redirect('/admin/home')
-  }
+  deleteDoc: async (req, res) => {
+    const productid = req.params.id;
+    await productModel.deleteOne({ _id: productid });
+    res.redirect("/admin/home");
+  },
 };

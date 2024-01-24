@@ -11,15 +11,15 @@
     <div class="container">
         <div class="card">
           <div class="card_title">
-            <h1>Edit Product</h1>
-            <div class="pic"><img src="/images/<%=data.imgpath%>" class="img"></div>
+            <h3>EDIT PRODUCT</h3>
+            <div class="pic"><img src="/images/<%=data.imgpath%>" class="img"  id="previewImage"></div>
           </div>
           <div class="form">
 
           <form action="/admin/<%= data._id %>" method="post" enctype="multipart/form-data">
      
             <label for="" >photo:</label>
-            <input type="file" name="imgpath"  placeholder="Enter your name" value="<%=data.imgpath%>" />
+            <input type="file" name="imgpath"  placeholder="Enter your name" value="<%=data.imgpath%>" id="imageInput" onchange="handleImageChange()" />
 
 
             <label for="" class="labemail">name:</label>
@@ -34,7 +34,7 @@
             <label for="" class="labcon">discription:</label>
             <input type="text" name="discription"  value="<%=data.discription%>" />
 
-            <button type="submit addbtn">Update</button>
+            <button type="submit">Update</button>
 
             
             </form>
@@ -46,6 +46,33 @@
         <a href="/admin/home"><button class="Backbtn">Back</button></a>
       </div>
 </div>
+
+<script>
+    function handleImageChange() {
+    const imageInput = document.getElementById('imageInput');
+    const previewImage = document.getElementById('previewImage');
+
+    const file = imageInput.files[0];
+
+    if (file) {
+        
+        const reader = new FileReader();
+
+       
+        reader.onload = function(e) {
+      
+            previewImage.src = e.target.result;
+        };
+
+        
+        reader.readAsDataURL(file);
+    } else {
+       
+        previewImage.src = "";
+    }
+}
+
+</script>
 </body>
 
 </html>

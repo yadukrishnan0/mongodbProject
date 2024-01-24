@@ -12,29 +12,32 @@
         <div class="card">
           <div class="card_title">
             <h1>Profile</h1>
-            <div class="pic"></div>
+            <!-- <div class="pic"></div> -->
           </div>
           <div class="form">
-          <form action="/" method="post" enctype="multipart/form-data">
+          <form action="/user/profilepost" method="post" >
      
-            <label for="" >photo:</label>
-            <input type="file" name="imgpath"  placeholder="Enter your name" />
+            <!-- <label for="" >photo:</label> -->
+            <!-- <input type="file" name="imgpath"  placeholder="Enter your name" /> -->
 
 
             <label for="" >name:</label>
-            <input type="text" name="name" id="name"  />
+            <input type="text" name="name" id="name" value="<%=fulldata[0].name%>"  />
+             
+            <label for="" >email:</label>
+            <input type="text" name="email" id="name" value="<%=fulldata[0].email%>"  />
 
             <label for="" >Phone:</label>
-            <input type="text" name="phone" />
+            <input type="text" name="phone" value="<%=fulldata[0].detais[0]?fulldata[0].detais[0].phone:null%>" />
  
             <label for="">city:</label>
-            <input type="" name="city"  id="price" />
+            <input type="" name="city"  id="price" value="<%=fulldata[0].detais[0]?fulldata[0].detais[0].city:null%>"/>
 
             <label for="" >Age:</label>
-            <input type="text" name="age"  id="confirmpassword" />
+            <input type="text" name="age"  id="confirmpassword"  value="<%=fulldata[0].detais[0]?fulldata[0].detais[0].age:null%>"/>
 
             <label for="" >Address:</label>
-            <input type="text" name="address" />
+            <input type="text" name="address" value="<%=fulldata[0].detais[0]?fulldata[0].detais[0].address:null%>"" />
 
 
             <button type="submit addbtn">Update</button>

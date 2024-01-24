@@ -18,6 +18,6 @@ router.get("/home",adminHomeGEt);
 router.get("/addproducts",AddProductGet)
 router.post("/addproducts",upload.single('imgpath'),AddProductPost)
 router.get("/:id",editGet)
-router.post("/:id",editPost)
+router.post("/:id",upload.single('imgpath'),editPost)
 router.get("/delete/:id",deleteDoc)
 module.exports=router;
